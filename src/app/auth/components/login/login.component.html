@@ -1,0 +1,27 @@
+<p class="text-xl text-center font-medium">Log In</p>
+
+<form [formGroup]="form" (ngSubmit)="handleLogin()" autocomplete="off" class="flex flex-col items-center">
+    <mat-form-field class="w-full mb-2">
+        <input matInput placeholder="Email:" formControlName="email" required />
+        <mat-error>
+            <app-validator-message [key]="'email'" [field]="form.get('email')"></app-validator-message>
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-full mb-2">
+        <input matInput placeholder="Password:" formControlName="password" [type]="hidePassword ? 'password' : 'text'" required />
+        <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button" class="toggle-password">
+            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error>
+            <app-validator-message [key]="'password'" [field]="form.get('password')"></app-validator-message>
+        </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" [disabled]="form.invalid || form.disabled" type="submit" class="w-full">Log in</button>
+
+    <div class="mt-4 text-center">
+        Need an account?
+        <a class="text-primary" routerLink="/auth/signup">Sign up now</a>
+    </div>
+</form>

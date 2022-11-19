@@ -1,0 +1,9 @@
+<app-modal-header [title]="data.title"></app-modal-header>
+
+<ng-container *ngIf="data.message">
+    <p class="text-center pt-4">{{ data.message }}</p>
+</ng-container>
+
+<mat-dialog-actions class="justify-center">
+    <button class="w-1/3" mat-raised-button color="primary" [mat-dialog-close]="false">Ok</button>
+</mat-dialog-actions>

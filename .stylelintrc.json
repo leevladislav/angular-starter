@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss"
+  ],
+ "rules": {
+   "at-rule-empty-line-before": null,
+   "no-empty-source": null,
+   "scss/at-rule-no-unknown": null,
+   "scss/at-mixin-argumentless-call-parentheses": null,
+   "scss/dollar-variable-empty-line-before": null,
+   "no-invalid-position-at-import-rule": null,
+   "indentation": 4,
+   "string-quotes": "single",
+   "color-hex-length": "long"
+ }
+}

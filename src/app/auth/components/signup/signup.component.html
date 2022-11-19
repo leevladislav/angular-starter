@@ -1,0 +1,62 @@
+<p class="text-xl text-center font-medium">Sign Up</p>
+
+<form [formGroup]="form" (ngSubmit)="handleSignup()" autocomplete="off" class="flex flex-col items-center">
+    <mat-form-field class="w-full mb-2">
+        <input matInput placeholder="Name:" formControlName="name" required />
+        <mat-error>
+            <app-validator-message [key]="'name'" [field]="form.get('name')"></app-validator-message>
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-full mb-2">
+        <input matInput placeholder="Email:" formControlName="email" required />
+        <mat-error>
+            <app-validator-message [key]="'email'" [field]="form.get('email')"></app-validator-message>
+        </mat-error>
+    </mat-form-field>
+
+    <fieldset formGroupName="newPassword" class="w-full">
+        <legend>password</legend>
+        <mat-form-field class="w-full mb-2">
+            <input matInput placeholder="Password:" formControlName="password" [type]="hideNewPassword ? 'password' : 'text'" required />
+            <button mat-icon-button matSuffix (click)="hideNewPassword = !hideNewPassword" type="button" class="toggle-password">
+                <mat-icon>{{ hideNewPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+            <mat-error>
+                <app-validator-message [key]="'password'" [field]="form.get('newPassword')?.get('password')"></app-validator-message>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-full mb-2">
+            <input
+                matInput
+                placeholder="Repeat password:"
+                formControlName="repeatPassword"
+                [type]="hideRepeatNewPassword ? 'password' : 'text'"
+                required
+            />
+            <button
+                mat-icon-button
+                matSuffix
+                (click)="hideRepeatNewPassword = !hideRepeatNewPassword"
+                type="button"
+                class="toggle-password"
+            >
+                <mat-icon>{{ hideRepeatNewPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+            <mat-error>
+                <app-validator-message
+                    [key]="'repeatPassword'"
+                    [field]="form.get('newPassword')?.get('repeatPassword')"
+                ></app-validator-message>
+            </mat-error>
+        </mat-form-field>
+    </fieldset>
+
+    <button mat-raised-button color="primary" [disabled]="form.invalid || form.disabled" type="submit" class="w-full">Sign up</button>
+
+    <div class="mt-4 text-center">
+        Already have an account?
+        <a class="text-primary" routerLink="/auth/login">Sign in now</a>
+    </div>
+</form>

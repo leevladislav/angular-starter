@@ -1,0 +1,13 @@
+<div class="my-5">
+    <p class="text-center text-2xl">Books</p>
+
+    <div *ngIf="books$ | async as books; else loader" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <ng-container *ngFor="let book of books">
+            <div>{{ book.name }}</div>
+        </ng-container>
+    </div>
+
+    <ng-template #loader>
+        <mat-spinner class="my-5 mx-auto"></mat-spinner>
+    </ng-template>
+</div>

@@ -1,0 +1,11 @@
+<app-modal-header [title]="data.title || 'Confirmation'"></app-modal-header>
+
+<ng-container *ngIf="data.text">
+    <p class="text-center pt-4">{{ data.text }}</p>
+</ng-container>
+
+<mat-dialog-actions class="justify-center">
+    <button class="w-2/5" mat-raised-button [mat-dialog-close]="false">Cancel</button>
+
+    <button class="w-2/5" mat-raised-button color="primary" [mat-dialog-close]="true">Yes</button>
+</mat-dialog-actions>

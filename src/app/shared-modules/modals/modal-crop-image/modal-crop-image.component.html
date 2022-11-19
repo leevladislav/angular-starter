@@ -1,0 +1,40 @@
+<ng-container *ngIf="!error">
+    <app-modal-header [title]="'Crop image'"></app-modal-header>
+
+    <div class="dialog-content">
+        <image-cropper
+            [class.hidden]="isLoading"
+            [imageFile]="imageFile"
+            [maintainAspectRatio]="true"
+            [aspectRatio]="aspectRatio"
+            [resizeToWidth]="resizeToWidth"
+            [roundCropper]="roundCropper"
+            format="png"
+            (imageCropped)="imageCropped($event)"
+            (imageLoaded)="imageLoaded()"
+            (loadImageFailed)="loadImageFailed()"
+        ></image-cropper>
+
+        <ng-container *ngIf="isLoading">
+            <mat-spinner class="my-5 mx-auto"></mat-spinner>
+        </ng-container>
+
+        <mat-dialog-actions class="justify-center">
+            <button class="w-2/5" mat-raised-button [mat-dialog-close]="false">Cancel</button>
+
+            <button class="w-2/5" mat-raised-button color="primary" (click)="cropImage()">Crop</button>
+        </mat-dialog-actions>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="error">
+    <app-modal-header [title]="'Error'"></app-modal-header>
+
+    <div class="dialog-content text-center">
+        <p>Invalid format</p>
+
+        <mat-dialog-actions>
+            <button class="btn btn-accent" [mat-dialog-close]="false">Ок</button>
+        </mat-dialog-actions>
+    </div>
+</ng-container>

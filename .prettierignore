@@ -1,0 +1,22 @@
+# compiled output
+dist/
+tmp/
+out-tsc/
+middleware/
+/coverage
+*i18n*.json
+
+# IDEs and editors
+.idea/
+.vscode/
+
+# dependencies
+/node_modules
+
+.prettierignore
+package-lock.json
+package.json
+src/polyfills.ts
+
+e2e/**/*
+src/assets/**/*
